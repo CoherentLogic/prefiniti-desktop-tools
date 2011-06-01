@@ -1,3 +1,6 @@
-﻿Public Class LoginProgress
+﻿'
+' $Id$
+'
+Public Class LoginProgress
 
 End Class

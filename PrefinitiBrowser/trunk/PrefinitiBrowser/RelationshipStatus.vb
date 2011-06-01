@@ -1,4 +1,7 @@
-﻿Public Class RelationshipStatus
+﻿'
+' $Id$
+'
+Public Class RelationshipStatus
     Private szRelationshipType As String
     Private uaSignificantOther As UserAccount
 

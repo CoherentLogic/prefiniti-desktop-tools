@@ -1,4 +1,7 @@
-﻿Public Class Auth
+﻿'
+' $Id$
+'
+Public Class Auth
     Private ws As New PAFAuth.Authentication
     Private uaActiveUser As UserAccount
 
