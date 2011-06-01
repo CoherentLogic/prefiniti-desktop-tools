@@ -5,13 +5,19 @@ Public Class PrefinitiLogin
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         Me.Hide()
-        AuthenticationContext.Login(Me.UsernameTextBox.Text, Me.PasswordTextBox.Text)
+        Dim result As AuthenticationResult
 
-        If AuthenticationContext.LoggedIn = False Then
-            MessageBox.Show("Invalid username or password. Please log in again.", "Authentication Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Me.UsernameTextBox.Text = ""
-            Me.PasswordTextBox.Text = ""
-            Me.UsernameTextBox.Focus()
+        result = AuthenticationContext.Login(Me.UsernameTextBox.Text, Me.PasswordTextBox.Text)
+
+        If result.Success = False Then
+            MessageBox.Show(result.Message, "Authentication Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If result.Fatal = False Then
+                Me.UsernameTextBox.Text = ""
+                Me.PasswordTextBox.Text = ""
+                Me.UsernameTextBox.Focus()
+            Else
+                End
+            End If
         Else
 
 
