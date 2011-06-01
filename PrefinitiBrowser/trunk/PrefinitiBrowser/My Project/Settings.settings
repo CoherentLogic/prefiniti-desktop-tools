@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="PrefinitiBrowser_prefiniti_authentication_Authentication" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://orms.prefiniti.com/Authentication.cfc</Value>
+    </Setting>
+    <Setting Name="PrefinitiBrowser_PAFWeb_WebResource" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://orms.prefiniti.com/WebResource.cfc</Value>
+    </Setting>
+    <Setting Name="PrefinitiBrowser_PAFUser_UserResource" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://orms.prefiniti.com/UserResource.cfc</Value>
+    </Setting>
+    <Setting Name="PrefinitiBrowser_PAFSocial_SocialConnection" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://orms.prefiniti.com/SocialConnection.cfc</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

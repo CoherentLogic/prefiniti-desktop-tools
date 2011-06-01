@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" targetNamespace="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://DefaultNamespace">
+      <xsd:import namespace="http://xml.apache.org/xml-soap" />
+      <xsd:import namespace="http://rpc.xml.coldfusion" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_xsd_anyType">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:anyType[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_xsd_string">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOf_xsd_anyType">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:anyType[][]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion">
+      <xsd:import namespace="http://DefaultNamespace" />
+      <xsd:import namespace="http://xml.apache.org/xml-soap" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="CFCInvocationException">
+        <xsd:sequence />
+      </xsd:complexType>
+      <xsd:complexType name="QueryBean">
+        <xsd:sequence>
+          <xsd:element name="columnList" nillable="true" type="intf:ArrayOf_xsd_string" />
+          <xsd:element name="data" nillable="true" type="intf:ArrayOfArrayOf_xsd_anyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.apache.org/xml-soap">
+      <xsd:import namespace="http://DefaultNamespace" />
+      <xsd:import namespace="http://rpc.xml.coldfusion" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="mapItem">
+        <xsd:sequence>
+          <xsd:element name="key" nillable="true" type="xsd:anyType" />
+          <xsd:element name="value" nillable="true" type="xsd:anyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Map">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="apachesoap:mapItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException" />
+  </wsdl:message>
+  <wsdl:message name="GetFriendsRequest">
+    <wsdl:part name="username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SetLocationRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="location" type="xsd:string" />
+    <wsdl:part name="activity" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetActivityResponse">
+    <wsdl:part name="GetActivityReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetActivityRequest">
+    <wsdl:part name="username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationURLResponse">
+    <wsdl:part name="GetLocationURLReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationRequest">
+    <wsdl:part name="username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFriendCountRequest">
+    <wsdl:part name="username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationURLRequest">
+    <wsdl:part name="username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SetLocationResponse" />
+  <wsdl:message name="GetFriendCountResponse">
+    <wsdl:part name="GetFriendCountReturn" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationResponse">
+    <wsdl:part name="GetLocationReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SetLocationURLResponse" />
+  <wsdl:message name="GetFriendsResponse">
+    <wsdl:part name="GetFriendsReturn" type="intf:ArrayOf_xsd_anyType" />
+  </wsdl:message>
+  <wsdl:message name="SetLocationURLRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="location_url" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="SocialConnection">
+    <wsdl:operation name="GetFriends" parameterOrder="username">
+      <wsdl:input name="GetFriendsRequest" message="intf:GetFriendsRequest" />
+      <wsdl:output name="GetFriendsResponse" message="intf:GetFriendsResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendCount" parameterOrder="username">
+      <wsdl:input name="GetFriendCountRequest" message="intf:GetFriendCountRequest" />
+      <wsdl:output name="GetFriendCountResponse" message="intf:GetFriendCountResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationURL" parameterOrder="username">
+      <wsdl:input name="GetLocationURLRequest" message="intf:GetLocationURLRequest" />
+      <wsdl:output name="GetLocationURLResponse" message="intf:GetLocationURLResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocation" parameterOrder="username">
+      <wsdl:input name="GetLocationRequest" message="intf:GetLocationRequest" />
+      <wsdl:output name="GetLocationResponse" message="intf:GetLocationResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLocationURL" parameterOrder="username location_url">
+      <wsdl:input name="SetLocationURLRequest" message="intf:SetLocationURLRequest" />
+      <wsdl:output name="SetLocationURLResponse" message="intf:SetLocationURLResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLocation" parameterOrder="username location activity">
+      <wsdl:input name="SetLocationRequest" message="intf:SetLocationRequest" />
+      <wsdl:output name="SetLocationResponse" message="intf:SetLocationResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivity" parameterOrder="username">
+      <wsdl:input name="GetActivityRequest" message="intf:GetActivityRequest" />
+      <wsdl:output name="GetActivityResponse" message="intf:GetActivityResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SocialConnection.cfcSoapBinding" type="intf:SocialConnection">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="GetFriends">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetFriendsRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetFriendsResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendCount">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetFriendCountRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetFriendCountResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationURL">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetLocationURLRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetLocationURLResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocation">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetLocationRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetLocationResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetLocationURL">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="SetLocationURLRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="SetLocationURLResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetLocation">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="SetLocationRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="SetLocationResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivity">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetActivityRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetActivityResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SocialConnection">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Web service for interfacing with friends  </wsdl:documentation>
+    <wsdl:port name="SocialConnection.cfc" binding="intf:SocialConnection.cfcSoapBinding">
+      <wsdlsoap:address location="http://orms.prefiniti.com/SocialConnection.cfc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
