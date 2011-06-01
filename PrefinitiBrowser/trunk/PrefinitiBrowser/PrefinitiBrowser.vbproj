@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Auth.vb" />
+    <Compile Include="AuthenticationResult.vb" />
     <Compile Include="frmWorkspace.Designer.vb">
       <DependentUpon>frmWorkspace.vb</DependentUpon>
     </Compile>

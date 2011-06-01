@@ -46,11 +46,10 @@ Public Class Auth
 
     End Function
 
-    Public Function Login(ByVal Username As String, ByVal Password As String) As Boolean
+    Public Function Login(ByVal Username As String, ByVal Password As String) As AuthenticationResult
 
         Dim progWin As New LoginProgress
         Dim fc As Integer
-
 
         Me.szKey = Me.ws.GetKey(Username, Password)
         Me.szUsername = Username
@@ -61,20 +60,23 @@ Public Class Auth
         progWin.Show()
         progWin.Refresh()
 
-
-
-
         If Me.Key <> "0" Then
             Me.bLoggedIn = True
             Me.uaActiveUser = New UserAccount()
             Me.uaActiveUser.Load(Username)
-            Me.LoadFriends(progWin)
-            progWin.Dispose()
 
-            Return True
+            If Me.uaActiveUser.Enabled = True Then
+                Me.LoadFriends(progWin)
+                progWin.Dispose()
+                Return New AuthenticationResult(True, False, "Login successful.")
+            Else
+                Me.bLoggedIn = False
+                Return New AuthenticationResult(False, True, "Your account has been disabled. Please contact Prefiniti customer support.")
+            End If
+
         Else
             Me.bLoggedIn = False
-            Return False
+            Return New AuthenticationResult(False, False, "Invalid username or password. Please try again.")
         End If
 
     End Function
