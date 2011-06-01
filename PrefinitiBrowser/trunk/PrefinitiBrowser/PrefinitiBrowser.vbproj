@@ -362,6 +362,7 @@
     <None Include="Resources\prefiniti1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="COPYING" />
     <Content Include="pi-16x16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
