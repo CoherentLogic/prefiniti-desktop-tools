@@ -1,4 +1,7 @@
-﻿Public Class frmWorkspace
+﻿'
+' $Id$
+'
+Public Class frmWorkspace
     Public Navigators() As WebNavigation
     Public CurrentNavigator As Integer = 0
     Private NavigatorCount As Integer = 0
@@ -23,10 +26,10 @@
         End If
     End Sub
 
-    Private Sub frmWorkspace_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load        
+    Private Sub frmWorkspace_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.tsmiUsername.Text = AuthenticationContext.Username
         Me.tsmiLongname.Text = AuthenticationContext.UserAccount.RealName.ToString()
-       
+
         Dim i As UserAccount
         Dim j As New ImageList()
 
@@ -47,7 +50,7 @@
             lp.Refresh()
             Me.lvwFriends.Items.Add(i.UserName, i.RealName.ToString(), idx)
             j.Images.Add(i.Picture)
-            idx += 1        
+            idx += 1
         Next
 
         Me.lvwFriends.LargeImageList = j
@@ -65,7 +68,7 @@
         Me.Navigators(Me.CurrentNavigator).Forward()
     End Sub
 
-    
+
     Private Sub frmWorkspace_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
         Me.tcBrowser.Width = Me.scWorkspace.Panel2.ClientRectangle.Width
         Me.tcBrowser.Height = Me.scWorkspace.Panel2.ClientRectangle.Height

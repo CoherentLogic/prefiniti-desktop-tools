@@ -1,4 +1,7 @@
-﻿Imports System.Diagnostics
+﻿'
+' $Id$
+'
+Imports System.Diagnostics
 Imports System.Windows.Forms
 
 Public Class UserPicker

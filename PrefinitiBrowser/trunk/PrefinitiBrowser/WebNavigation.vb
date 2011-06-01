@@ -1,4 +1,7 @@
-﻿Public Class WebNavigation
+﻿'
+' $Id$
+'
+Public Class WebNavigation
     Private sForward As New Stack                   'forward history stack
     Private sBackward As New Stack                  'backward history stack
     Private szCurrentPage As String                 'current page url
@@ -42,9 +45,9 @@
             .tsbtnBack = .wsWindow.tsBack
             .tsbtnForward = .wsWindow.tsForward
             .wbStatusBar = .wsWindow.tsNavStatus
-            .WRes = New PAFWeb.WebResource    
+            .WRes = New PAFWeb.WebResource
             .wbTarget = New WebBrowser
-            .wbTabPage = New TabPage            
+            .wbTabPage = New TabPage
         End With
 
         With Me.wbTabPage
@@ -77,7 +80,7 @@
     End Sub
 
     Public Sub StatusTextChanged(ByVal sender As Object, ByVal e As EventArgs)
-        Me.wbStatusBar.Text = Me.wbTarget.StatusText    
+        Me.wbStatusBar.Text = Me.wbTarget.StatusText
     End Sub
 
     Public Sub SwitchTo()
@@ -114,7 +117,7 @@
             PageURL = "http://" + PageURL
         End If
 
-        
+
 
         If Me.IsEnhanced(PageURL) = True Then
 
@@ -128,7 +131,7 @@
 
 
 
-        Dim uriTarget As New System.Uri(PageURL)        
+        Dim uriTarget As New System.Uri(PageURL)
 
         Me.wbTarget.Navigate(PageURL)
     End Sub
@@ -175,7 +178,7 @@
 
     Public Sub CommitPage(ByVal PageURL As String)
 
-       
+
         If Me.szCurrentPage = "" Then
             Me.szCurrentPage = PageURL
         Else
@@ -198,15 +201,15 @@
             .SetNavButtonState()
             .wbTarget.Focus()
             .WRes.Collect(AuthenticationContext.Key, PageURL)
-            .SetLocation("Browsing")            
+            .SetLocation("Browsing")
         End With
 
         Dim favicon As String = ""
-       
+
         Dim links As HtmlElementCollection
-       
+
         links = Me.wbTarget.Document.GetElementsByTagName("link")
-      
+
         Dim link As HtmlElement
         For Each link In links
             If InStr(LCase(link.GetAttribute("rel")), "icon") Or InStr(LCase(link.GetAttribute("rel")), "shortcut icon") Then

@@ -1,3 +1,7 @@
-﻿Public Class Workspace
+﻿'
+' $Id$
+'
+
+Public Class Workspace
 
 End Class

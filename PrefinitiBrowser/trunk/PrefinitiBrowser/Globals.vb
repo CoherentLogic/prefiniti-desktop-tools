@@ -1,4 +1,7 @@
-﻿Imports System.IO
+﻿'
+' $Id$
+'
+Imports System.IO
 Imports System.Net
 Imports System.Text
 

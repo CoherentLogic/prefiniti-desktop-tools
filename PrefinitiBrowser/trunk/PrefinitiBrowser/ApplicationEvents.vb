@@ -1,4 +1,7 @@
-﻿Namespace My
+﻿'
+' $Id$
+'
+Namespace My
 
     ' The following events are available for MyApplication:
     ' 

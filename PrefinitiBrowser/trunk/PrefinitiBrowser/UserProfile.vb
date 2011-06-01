@@ -1,3 +1,6 @@
-﻿Public Class UserProfile
+﻿'
+' $Id$
+'
+Public Class UserProfile
 
 End Class
