@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" targetNamespace="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://DefaultNamespace">
+      <xsd:import namespace="http://xml.apache.org/xml-soap" />
+      <xsd:import namespace="http://rpc.xml.coldfusion" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_xsd_anyType">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:anyType[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_xsd_string">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOf_xsd_anyType">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:anyType[][]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion">
+      <xsd:import namespace="http://DefaultNamespace" />
+      <xsd:import namespace="http://xml.apache.org/xml-soap" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="CFCInvocationException">
+        <xsd:sequence />
+      </xsd:complexType>
+      <xsd:complexType name="QueryBean">
+        <xsd:sequence>
+          <xsd:element name="columnList" nillable="true" type="intf:ArrayOf_xsd_string" />
+          <xsd:element name="data" nillable="true" type="intf:ArrayOfArrayOf_xsd_anyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.apache.org/xml-soap">
+      <xsd:import namespace="http://DefaultNamespace" />
+      <xsd:import namespace="http://rpc.xml.coldfusion" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="mapItem">
+        <xsd:sequence>
+          <xsd:element name="key" nillable="true" type="xsd:anyType" />
+          <xsd:element name="value" nillable="true" type="xsd:anyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Map">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="apachesoap:mapItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException" />
+  </wsdl:message>
+  <wsdl:message name="IsOnlineResponse">
+    <wsdl:part name="IsOnlineReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="LastSeenResponse">
+    <wsdl:part name="LastSeenReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadRequest">
+    <wsdl:part name="UserName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="UserIDFromUsernameRequest">
+    <wsdl:part name="Username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SigninDateRequest">
+    <wsdl:part name="Username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="IsOnlineRequest">
+    <wsdl:part name="Username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadResponse">
+    <wsdl:part name="LoadReturn" type="intf:ArrayOf_xsd_anyType" />
+  </wsdl:message>
+  <wsdl:message name="UserIDFromUsernameResponse">
+    <wsdl:part name="UserIDFromUsernameReturn" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="UsernameFromUserIDRequest">
+    <wsdl:part name="UserID" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="UsernameFromUserIDResponse">
+    <wsdl:part name="UsernameFromUserIDReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="SigninDateResponse">
+    <wsdl:part name="SigninDateReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="LastSeenRequest">
+    <wsdl:part name="Username" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="UserResource">
+    <wsdl:operation name="Load" parameterOrder="UserName">
+      <wsdl:input name="LoadRequest" message="intf:LoadRequest" />
+      <wsdl:output name="LoadResponse" message="intf:LoadResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIDFromUsername" parameterOrder="Username">
+      <wsdl:input name="UserIDFromUsernameRequest" message="intf:UserIDFromUsernameRequest" />
+      <wsdl:output name="UserIDFromUsernameResponse" message="intf:UserIDFromUsernameResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="UsernameFromUserID" parameterOrder="UserID">
+      <wsdl:input name="UsernameFromUserIDRequest" message="intf:UsernameFromUserIDRequest" />
+      <wsdl:output name="UsernameFromUserIDResponse" message="intf:UsernameFromUserIDResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="IsOnline" parameterOrder="Username">
+      <wsdl:input name="IsOnlineRequest" message="intf:IsOnlineRequest" />
+      <wsdl:output name="IsOnlineResponse" message="intf:IsOnlineResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="SigninDate" parameterOrder="Username">
+      <wsdl:input name="SigninDateRequest" message="intf:SigninDateRequest" />
+      <wsdl:output name="SigninDateResponse" message="intf:SigninDateResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="LastSeen" parameterOrder="Username">
+      <wsdl:input name="LastSeenRequest" message="intf:LastSeenRequest" />
+      <wsdl:output name="LastSeenResponse" message="intf:LastSeenResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserResource.cfcSoapBinding" type="intf:UserResource">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="Load">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="LoadRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="LoadResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UserIDFromUsername">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="UserIDFromUsernameRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="UserIDFromUsernameResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UsernameFromUserID">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="UsernameFromUserIDRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="UsernameFromUserIDResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsOnline">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="IsOnlineRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="IsOnlineResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SigninDate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="SigninDateRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="SigninDateResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LastSeen">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="LastSeenRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="LastSeenResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserResource">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Webservice for accessing user information  </wsdl:documentation>
+    <wsdl:port name="UserResource.cfc" binding="intf:UserResource.cfcSoapBinding">
+      <wsdlsoap:address location="http://orms.prefiniti.com/UserResource.cfc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

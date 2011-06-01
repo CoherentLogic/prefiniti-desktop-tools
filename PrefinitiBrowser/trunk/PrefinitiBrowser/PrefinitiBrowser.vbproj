@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5B2D1AEE-0072-4C8E-A5F3-D1CCABCD9C40}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>PrefinitiBrowser.My.MyApplication</StartupObject>
+    <RootNamespace>PrefinitiBrowser</RootNamespace>
+    <AssemblyName>PrefinitiDesktop</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <ApplicationIcon>pi-16x16.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PrefinitiDesktop.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PrefinitiDesktop.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="jabber-net, Version=2.1.0.710, Culture=neutral, PublicKeyToken=924c5b18328d6f09, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Jabber-Net\jabber-net.dll</HintPath>
+    </Reference>
+    <Reference Include="muzzle, Version=2.1.0.710, Culture=neutral, PublicKeyToken=924c5b18328d6f09, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Jabber-Net\muzzle.dll</HintPath>
+    </Reference>
+    <Reference Include="netlib.Dns, Version=1.1.3111.26991, Culture=neutral, PublicKeyToken=924c5b18328d6f09, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Jabber-Net\netlib.Dns.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UNOLibs.Net, Version=2.0.0.5, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UNOLibs.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Assemblies\WebKit.NET-0.5-bin-cairo\bin\WebKitBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, PublicKeyToken=924c5b18328d6f09, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Jabber-Net\zlib.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Auth.vb" />
+    <Compile Include="frmWorkspace.Designer.vb">
+      <DependentUpon>frmWorkspace.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWorkspace.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Globals.vb" />
+    <Compile Include="LocateUser.Designer.vb">
+      <DependentUpon>LocateUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LocateUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginProgress.Designer.vb">
+      <DependentUpon>LoginProgress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginProgress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PersonName.vb" />
+    <Compile Include="PrefinitiLogin.Designer.vb">
+      <DependentUpon>PrefinitiLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PrefinitiLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrefinitiSplash.Designer.vb">
+      <DependentUpon>PrefinitiSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PrefinitiSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelationshipStatus.vb" />
+    <Compile Include="UserAccount.vb" />
+    <Compile Include="UserPicker.Designer.vb">
+      <DependentUpon>UserPicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserPicker.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserProfile.Designer.vb">
+      <DependentUpon>UserProfile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Web References\PAFAuth\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PAFSocial\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PAFUser\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PAFWeb\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WebNavigation.vb" />
+    <Compile Include="Workspace.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmWorkspace.resx">
+      <DependentUpon>frmWorkspace.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocateUser.resx">
+      <DependentUpon>LocateUser.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginProgress.resx">
+      <DependentUpon>LoginProgress.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrefinitiLogin.resx">
+      <DependentUpon>PrefinitiLogin.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrefinitiSplash.resx">
+      <DependentUpon>PrefinitiSplash.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPicker.resx">
+      <DependentUpon>UserPicker.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserProfile.resx">
+      <DependentUpon>UserProfile.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PAFAuth\Authentication.wsdl" />
+    <None Include="Web References\PAFAuth\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://orms.prefiniti.com/Authentication.cfc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PAFAuth\</RelPath>
+      <UpdateFromURL>http://orms.prefiniti.com/Authentication.cfc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PrefinitiBrowser_prefiniti_authentication_Authentication</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://orms.prefiniti.com/SocialConnection.cfc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PAFSocial\</RelPath>
+      <UpdateFromURL>http://orms.prefiniti.com/SocialConnection.cfc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PrefinitiBrowser_PAFSocial_SocialConnection</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://orms.prefiniti.com/UserResource.cfc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PAFUser\</RelPath>
+      <UpdateFromURL>http://orms.prefiniti.com/UserResource.cfc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PrefinitiBrowser_PAFUser_UserResource</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://orms.prefiniti.com/WebResource.cfc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PAFWeb\</RelPath>
+      <UpdateFromURL>http://orms.prefiniti.com/WebResource.cfc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PrefinitiBrowser_PAFWeb_WebResource</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prefiniti.png" />
+    <None Include="Web References\PAFWeb\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PAFWeb\WebResource.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_broken.png" />
+    <None Include="Resources\world.png" />
+    <None Include="Web References\PAFSocial\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PAFSocial\SocialConnection.wsdl" />
+    <None Include="Web References\PAFUser\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\PAFUser\UserResource.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comments1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\web1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prefiniti1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pi-16x16.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

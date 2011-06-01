@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" targetNamespace="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="CFCInvocationException">
+        <xsd:sequence />
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RateResponse" />
+  <wsdl:message name="RatingExistsResponse">
+    <wsdl:part name="RatingExistsReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException" />
+  </wsdl:message>
+  <wsdl:message name="IsEnhancedResponse">
+    <wsdl:part name="IsEnhancedReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetMyRatingRequest">
+    <wsdl:part name="key" type="xsd:string" />
+    <wsdl:part name="url" type="xsd:string" />
+    <wsdl:part name="category" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="CollectRequest">
+    <wsdl:part name="key" type="xsd:string" />
+    <wsdl:part name="url" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="ShareResponse" />
+  <wsdl:message name="GetAverageRatingResponse">
+    <wsdl:part name="GetAverageRatingReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="IsEnhancedRequest">
+    <wsdl:part name="url" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMyRatingResponse">
+    <wsdl:part name="GetMyRatingReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="CollectResponse" />
+  <wsdl:message name="RateRequest">
+    <wsdl:part name="key" type="xsd:string" />
+    <wsdl:part name="url" type="xsd:string" />
+    <wsdl:part name="category" type="xsd:string" />
+    <wsdl:part name="rating" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetAverageRatingRequest">
+    <wsdl:part name="key" type="xsd:string" />
+    <wsdl:part name="url" type="xsd:string" />
+    <wsdl:part name="category" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="RatingExistsRequest">
+    <wsdl:part name="key" type="xsd:string" />
+    <wsdl:part name="url" type="xsd:string" />
+    <wsdl:part name="category" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="ShareRequest">
+    <wsdl:part name="key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="WebResource">
+    <wsdl:operation name="Collect" parameterOrder="key url">
+      <wsdl:input name="CollectRequest" message="intf:CollectRequest" />
+      <wsdl:output name="CollectResponse" message="intf:CollectResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="Rate" parameterOrder="key url category rating">
+      <wsdl:input name="RateRequest" message="intf:RateRequest" />
+      <wsdl:output name="RateResponse" message="intf:RateResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="Share" parameterOrder="key">
+      <wsdl:input name="ShareRequest" message="intf:ShareRequest" />
+      <wsdl:output name="ShareResponse" message="intf:ShareResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAverageRating" parameterOrder="key url category">
+      <wsdl:input name="GetAverageRatingRequest" message="intf:GetAverageRatingRequest" />
+      <wsdl:output name="GetAverageRatingResponse" message="intf:GetAverageRatingResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyRating" parameterOrder="key url category">
+      <wsdl:input name="GetMyRatingRequest" message="intf:GetMyRatingRequest" />
+      <wsdl:output name="GetMyRatingResponse" message="intf:GetMyRatingResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="RatingExists" parameterOrder="key url category">
+      <wsdl:input name="RatingExistsRequest" message="intf:RatingExistsRequest" />
+      <wsdl:output name="RatingExistsResponse" message="intf:RatingExistsResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="IsEnhanced" parameterOrder="url">
+      <wsdl:input name="IsEnhancedRequest" message="intf:IsEnhancedRequest" />
+      <wsdl:output name="IsEnhancedResponse" message="intf:IsEnhancedResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebResource.cfcSoapBinding" type="intf:WebResource">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="Collect">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="CollectRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="CollectResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Rate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="RateRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="RateResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Share">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ShareRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="ShareResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAverageRating">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetAverageRatingRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetAverageRatingResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyRating">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetMyRatingRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetMyRatingResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RatingExists">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="RatingExistsRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="RatingExistsResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsEnhanced">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="IsEnhancedRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="IsEnhancedResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebResource">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+A worldwide web resource  </wsdl:documentation>
+    <wsdl:port name="WebResource.cfc" binding="intf:WebResource.cfcSoapBinding">
+      <wsdlsoap:address location="http://orms.prefiniti.com/WebResource.cfc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

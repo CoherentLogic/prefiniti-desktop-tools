@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" targetNamespace="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="CFCInvocationException">
+        <xsd:sequence />
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="UserIDFromKeyResponse">
+    <wsdl:part name="UserIDFromKeyReturn" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException" />
+  </wsdl:message>
+  <wsdl:message name="GetKeyRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateKeyRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="LogoutRequest">
+    <wsdl:part name="key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="UserIDFromKeyRequest">
+    <wsdl:part name="key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateKeyResponse">
+    <wsdl:part name="ValidateKeyReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="LogoutResponse" />
+  <wsdl:message name="GetKeyResponse">
+    <wsdl:part name="GetKeyReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="Authentication">
+    <wsdl:operation name="ValidateKey" parameterOrder="username key">
+      <wsdl:input name="ValidateKeyRequest" message="intf:ValidateKeyRequest" />
+      <wsdl:output name="ValidateKeyResponse" message="intf:ValidateKeyResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKey" parameterOrder="username password">
+      <wsdl:input name="GetKeyRequest" message="intf:GetKeyRequest" />
+      <wsdl:output name="GetKeyResponse" message="intf:GetKeyResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIDFromKey" parameterOrder="key">
+      <wsdl:input name="UserIDFromKeyRequest" message="intf:UserIDFromKeyRequest" />
+      <wsdl:output name="UserIDFromKeyResponse" message="intf:UserIDFromKeyResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout" parameterOrder="key">
+      <wsdl:input name="LogoutRequest" message="intf:LogoutRequest" />
+      <wsdl:output name="LogoutResponse" message="intf:LogoutResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Authentication.cfcSoapBinding" type="intf:Authentication">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="ValidateKey">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ValidateKeyRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="ValidateKeyResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetKey">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetKeyRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetKeyResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UserIDFromKey">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="UserIDFromKeyRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="UserIDFromKeyResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="LogoutRequest">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="LogoutResponse">
+        <wsdlsoap:body use="encoded" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://DefaultNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Authentication">
+    <wsdl:port name="Authentication.cfc" binding="intf:Authentication.cfcSoapBinding">
+      <wsdlsoap:address location="http://orms.prefiniti.com/Authentication.cfc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
