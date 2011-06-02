@@ -20,5 +20,14 @@
 ' along with Prefiniti.  If not, see <http://www.gnu.org/licenses/>.
 '
 Public Class Workspace
+    Private frmBrowserWindow As frmWorkspace
 
+    Public Sub New()
+        Me.frmBrowserWindow = New frmWorkspace
+    End Sub
+
+    Public Sub Show()
+        Me.frmBrowserWindow.MdiParent = mdiMain
+        Me.frmBrowserWindow.Show()
+    End Sub
 End Class

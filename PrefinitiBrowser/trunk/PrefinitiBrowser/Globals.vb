@@ -25,13 +25,18 @@ Imports System.Text
 
 Module Globals
     Public AuthenticationContext As Auth = New Auth
-    Public BrowserWindows() As frmWorkspace
-    Public CurrentBrowserWindow As frmWorkspace
-    Public BrowserWindowCount As Integer = 1
+    Public Workspaces() As Workspace
+    Public CurrentWorkspace As Integer
+    Public WorkspaceCount As Integer = 1
 
     Public Sub NewWindow()
-        Dim nWin As New frmWorkspace
-        nWin.Show()
+        ReDim Preserve Workspaces(WorkspaceCount)
+
+        Workspaces(WorkspaceCount) = New Workspace()
+        Workspaces(WorkspaceCount).Show()    
+        CurrentWorkspace = WorkspaceCount
+
+        WorkspaceCount += 1
     End Sub
 
     Public Function PictureFromURL(ByVal PageURL As String) As Image

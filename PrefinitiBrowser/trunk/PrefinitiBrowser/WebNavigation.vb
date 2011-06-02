@@ -71,15 +71,20 @@ Public Class WebNavigation
         With Me.wbTabPage
             .Text = "Untitled"
             .Width = Me.wbTabCtl.Width
-            .Height = Me.wbTabCtl.Height
+            .Height = Me.wbTabCtl.Height            
         End With
 
         With Me.wbTarget
             .Height = Me.wbTabPage.Height
             .Width = Me.wbTabPage.Width
+            .Dock = DockStyle.Fill
         End With
 
-        Me.wbTabCtl.TabPages.Add(Me.wbTabPage)
+        With Me.wbTabCtl
+            .TabPages.Add(Me.wbTabPage)
+            .Dock = DockStyle.Fill
+        End With
+
         Me.wbTabPage.Controls.Add(Me.wbTarget)
 
         AddHandler Me.wbTarget.DocumentCompleted, New WebBrowserDocumentCompletedEventHandler(AddressOf Me.DocumentLoaded)
