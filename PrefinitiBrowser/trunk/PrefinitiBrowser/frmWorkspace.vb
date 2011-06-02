@@ -88,18 +88,18 @@ Public Class frmWorkspace
 
 
     Private Sub frmWorkspace_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
-        Me.tcBrowser.Width = Me.scWorkspace.Panel2.ClientRectangle.Width
-        Me.tcBrowser.Height = Me.scWorkspace.Panel2.ClientRectangle.Height
+        'Me.tcBrowser.Width = Me.scWorkspace.Panel2.ClientRectangle.Width
+        'Me.tcBrowser.Height = Me.scWorkspace.Panel2.ClientRectangle.Height
 
-        Me.tcTools.Width = Me.scWorkspace.Panel1.ClientRectangle.Width
-        Me.tcTools.Height = Me.scWorkspace.Panel1.ClientRectangle.Height
+        'Me.tcTools.Width = Me.scWorkspace.Panel1.ClientRectangle.Width
+        'Me.tcTools.Height = Me.scWorkspace.Panel1.ClientRectangle.Height
 
-        Me.tpFriends.Width = Me.tcTools.ClientRectangle.Width
-        Me.tpFriends.Height = Me.tcTools.ClientRectangle.Height
+        'Me.tpFriends.Width = Me.tcTools.ClientRectangle.Width
+        'Me.tpFriends.Height = Me.tcTools.ClientRectangle.Height
 
 
-        Me.lvwFriends.Width = Me.tpFriends.ClientRectangle.Width
-        Me.lvwFriends.Height = Me.tpFriends.ClientRectangle.Height
+        'Me.lvwFriends.Width = Me.tpFriends.ClientRectangle.Width
+        'Me.lvwFriends.Height = Me.tpFriends.ClientRectangle.Height
     End Sub
 
     Private Sub NewWindowToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewWindowToolStripMenuItem.Click
