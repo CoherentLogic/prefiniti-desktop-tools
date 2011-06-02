@@ -458,11 +458,12 @@ Partial Class frmWorkspace
         Me.tcTools.Controls.Add(Me.tpLocalFiles)
         Me.tcTools.Controls.Add(Me.tpPrefiniti)
         Me.tcTools.Controls.Add(Me.TabPage1)
-        Me.tcTools.Location = New System.Drawing.Point(3, 3)
+        Me.tcTools.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tcTools.Location = New System.Drawing.Point(0, 0)
         Me.tcTools.Multiline = True
         Me.tcTools.Name = "tcTools"
         Me.tcTools.SelectedIndex = 0
-        Me.tcTools.Size = New System.Drawing.Size(195, 491)
+        Me.tcTools.Size = New System.Drawing.Size(216, 616)
         Me.tcTools.TabIndex = 0
         '
         'tpCurrentPage
@@ -475,7 +476,7 @@ Partial Class frmWorkspace
         Me.tpCurrentPage.Location = New System.Drawing.Point(23, 4)
         Me.tpCurrentPage.Name = "tpCurrentPage"
         Me.tpCurrentPage.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpCurrentPage.Size = New System.Drawing.Size(168, 483)
+        Me.tpCurrentPage.Size = New System.Drawing.Size(189, 608)
         Me.tpCurrentPage.TabIndex = 1
         Me.tpCurrentPage.Text = "This Site"
         '
