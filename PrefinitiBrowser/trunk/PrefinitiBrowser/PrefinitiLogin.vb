@@ -39,7 +39,8 @@ Public Class PrefinitiLogin
         Else
 
 
-            frmWorkspace.Show()
+            mdiMain.Show()
+
             Me.Close()
         End If
     End Sub

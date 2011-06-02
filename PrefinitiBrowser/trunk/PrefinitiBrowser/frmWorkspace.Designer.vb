@@ -30,6 +30,7 @@ Partial Class frmWorkspace
         Me.tsbStop = New System.Windows.Forms.ToolStripButton
         Me.tsbReload = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
+        Me.tsbFavorite = New System.Windows.Forms.ToolStripButton
         Me.cboURL = New System.Windows.Forms.ToolStripComboBox
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
         Me.tsbDiscuss = New System.Windows.Forms.ToolStripButton
@@ -66,7 +67,6 @@ Partial Class frmWorkspace
         Me.ForumToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ThisSiteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.AllForumsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.tsbFavorite = New System.Windows.Forms.ToolStripButton
         Me.scWorkspace = New System.Windows.Forms.SplitContainer
         Me.tcTools = New System.Windows.Forms.TabControl
         Me.tpCurrentPage = New System.Windows.Forms.TabPage
@@ -99,15 +99,15 @@ Partial Class frmWorkspace
         Me.tsmiLongname = New System.Windows.Forms.ToolStripStatusLabel
         Me.tcBrowser = New System.Windows.Forms.TabControl
         Me.msPrefiniti = New System.Windows.Forms.MenuStrip
-        Me.tsmiProjects = New System.Windows.Forms.ToolStripMenuItem
-        Me.tsmiTimeCollection = New System.Windows.Forms.ToolStripMenuItem
-        Me.tsmiInvoicing = New System.Windows.Forms.ToolStripMenuItem
         Me.tscbSites = New System.Windows.Forms.ToolStripComboBox
-        Me.tsmiMyAccount = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmiProjects = New System.Windows.Forms.ToolStripMenuItem
         Me.NewProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.FindProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmiTimeCollection = New System.Windows.Forms.ToolStripMenuItem
         Me.NewTimeCardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OpenTimeCardsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmiInvoicing = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmiMyAccount = New System.Windows.Forms.ToolStripMenuItem
         Me.tsNavigate.SuspendLayout()
         Me.cmsFriend.SuspendLayout()
         Me.msMain.SuspendLayout()
@@ -130,7 +130,7 @@ Partial Class frmWorkspace
         Me.tsNavigate.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsBack, Me.tsForward, Me.tsbStop, Me.tsbReload, Me.ToolStripSeparator1, Me.tsbFavorite, Me.cboURL, Me.ToolStripSeparator2, Me.tsbDiscuss, Me.tsbChat, Me.tsbShare, Me.ToolStripSeparator3, Me.tbtxtSearch})
         Me.tsNavigate.Location = New System.Drawing.Point(0, 24)
         Me.tsNavigate.Name = "tsNavigate"
-        Me.tsNavigate.Size = New System.Drawing.Size(990, 25)
+        Me.tsNavigate.Size = New System.Drawing.Size(1065, 25)
         Me.tsNavigate.TabIndex = 0
         Me.tsNavigate.Text = "ToolStrip1"
         '
@@ -178,6 +178,15 @@ Partial Class frmWorkspace
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'tsbFavorite
+        '
+        Me.tsbFavorite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbFavorite.Image = CType(resources.GetObject("tsbFavorite.Image"), System.Drawing.Image)
+        Me.tsbFavorite.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbFavorite.Name = "tsbFavorite"
+        Me.tsbFavorite.Size = New System.Drawing.Size(23, 22)
+        Me.tsbFavorite.Text = "ToolStripButton1"
         '
         'cboURL
         '
@@ -306,7 +315,7 @@ Partial Class frmWorkspace
         Me.msMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ViewToolStripMenuItem, Me.HistoryToolStripMenuItem, Me.BookmarksToolStripMenuItem, Me.PrefinitiToolStripMenuItem, Me.SocialWebToolStripMenuItem})
         Me.msMain.Location = New System.Drawing.Point(0, 0)
         Me.msMain.Name = "msMain"
-        Me.msMain.Size = New System.Drawing.Size(990, 24)
+        Me.msMain.Size = New System.Drawing.Size(1065, 24)
         Me.msMain.TabIndex = 2
         Me.msMain.Text = "MenuStrip1"
         '
@@ -422,15 +431,6 @@ Partial Class frmWorkspace
         Me.AllForumsToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.AllForumsToolStripMenuItem.Text = "All Forums..."
         '
-        'tsbFavorite
-        '
-        Me.tsbFavorite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbFavorite.Image = CType(resources.GetObject("tsbFavorite.Image"), System.Drawing.Image)
-        Me.tsbFavorite.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbFavorite.Name = "tsbFavorite"
-        Me.tsbFavorite.Size = New System.Drawing.Size(23, 22)
-        Me.tsbFavorite.Text = "ToolStripButton1"
-        '
         'scWorkspace
         '
         Me.scWorkspace.Dock = System.Windows.Forms.DockStyle.Fill
@@ -445,8 +445,8 @@ Partial Class frmWorkspace
         '
         Me.scWorkspace.Panel2.Controls.Add(Me.StatusStrip1)
         Me.scWorkspace.Panel2.Controls.Add(Me.tcBrowser)
-        Me.scWorkspace.Size = New System.Drawing.Size(990, 542)
-        Me.scWorkspace.SplitterDistance = 201
+        Me.scWorkspace.Size = New System.Drawing.Size(1065, 616)
+        Me.scWorkspace.SplitterDistance = 216
         Me.scWorkspace.TabIndex = 4
         '
         'tcTools
@@ -732,9 +732,9 @@ Partial Class frmWorkspace
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNavStatus, Me.tsmiUsername, Me.tsmiLongname})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 520)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 594)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(785, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(845, 22)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -759,10 +759,11 @@ Partial Class frmWorkspace
         '
         'tcBrowser
         '
-        Me.tcBrowser.Location = New System.Drawing.Point(3, 3)
+        Me.tcBrowser.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tcBrowser.Location = New System.Drawing.Point(0, 0)
         Me.tcBrowser.Name = "tcBrowser"
         Me.tcBrowser.SelectedIndex = 0
-        Me.tcBrowser.Size = New System.Drawing.Size(395, 283)
+        Me.tcBrowser.Size = New System.Drawing.Size(845, 616)
         Me.tcBrowser.TabIndex = 1
         '
         'msPrefiniti
@@ -775,6 +776,11 @@ Partial Class frmWorkspace
         Me.msPrefiniti.Text = "MenuStrip1"
         Me.msPrefiniti.Visible = False
         '
+        'tscbSites
+        '
+        Me.tscbSites.Name = "tscbSites"
+        Me.tscbSites.Size = New System.Drawing.Size(121, 23)
+        '
         'tsmiProjects
         '
         Me.tsmiProjects.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectToolStripMenuItem, Me.FindProjectToolStripMenuItem})
@@ -782,41 +788,24 @@ Partial Class frmWorkspace
         Me.tsmiProjects.Size = New System.Drawing.Size(61, 23)
         Me.tsmiProjects.Text = "Projects"
         '
+        'NewProjectToolStripMenuItem
+        '
+        Me.NewProjectToolStripMenuItem.Name = "NewProjectToolStripMenuItem"
+        Me.NewProjectToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
+        Me.NewProjectToolStripMenuItem.Text = "New Project"
+        '
+        'FindProjectToolStripMenuItem
+        '
+        Me.FindProjectToolStripMenuItem.Name = "FindProjectToolStripMenuItem"
+        Me.FindProjectToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
+        Me.FindProjectToolStripMenuItem.Text = "Find Project"
+        '
         'tsmiTimeCollection
         '
         Me.tsmiTimeCollection.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewTimeCardToolStripMenuItem, Me.OpenTimeCardsToolStripMenuItem})
         Me.tsmiTimeCollection.Name = "tsmiTimeCollection"
         Me.tsmiTimeCollection.Size = New System.Drawing.Size(103, 23)
         Me.tsmiTimeCollection.Text = "Time Collection"
-        '
-        'tsmiInvoicing
-        '
-        Me.tsmiInvoicing.Name = "tsmiInvoicing"
-        Me.tsmiInvoicing.Size = New System.Drawing.Size(68, 23)
-        Me.tsmiInvoicing.Text = "Invoicing"
-        '
-        'tscbSites
-        '
-        Me.tscbSites.Name = "tscbSites"
-        Me.tscbSites.Size = New System.Drawing.Size(121, 23)
-        '
-        'tsmiMyAccount
-        '
-        Me.tsmiMyAccount.Name = "tsmiMyAccount"
-        Me.tsmiMyAccount.Size = New System.Drawing.Size(84, 23)
-        Me.tsmiMyAccount.Text = "My Account"
-        '
-        'NewProjectToolStripMenuItem
-        '
-        Me.NewProjectToolStripMenuItem.Name = "NewProjectToolStripMenuItem"
-        Me.NewProjectToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.NewProjectToolStripMenuItem.Text = "New Project"
-        '
-        'FindProjectToolStripMenuItem
-        '
-        Me.FindProjectToolStripMenuItem.Name = "FindProjectToolStripMenuItem"
-        Me.FindProjectToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.FindProjectToolStripMenuItem.Text = "Find Project"
         '
         'NewTimeCardToolStripMenuItem
         '
@@ -830,11 +819,23 @@ Partial Class frmWorkspace
         Me.OpenTimeCardsToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.OpenTimeCardsToolStripMenuItem.Text = "Open Timesheets"
         '
+        'tsmiInvoicing
+        '
+        Me.tsmiInvoicing.Name = "tsmiInvoicing"
+        Me.tsmiInvoicing.Size = New System.Drawing.Size(68, 23)
+        Me.tsmiInvoicing.Text = "Invoicing"
+        '
+        'tsmiMyAccount
+        '
+        Me.tsmiMyAccount.Name = "tsmiMyAccount"
+        Me.tsmiMyAccount.Size = New System.Drawing.Size(84, 23)
+        Me.tsmiMyAccount.Text = "My Account"
+        '
         'frmWorkspace
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(990, 591)
+        Me.ClientSize = New System.Drawing.Size(1065, 665)
         Me.Controls.Add(Me.scWorkspace)
         Me.Controls.Add(Me.tsNavigate)
         Me.Controls.Add(Me.msMain)
