@@ -1,0 +1,1 @@
+This is a web browser designed to socialize the web.
